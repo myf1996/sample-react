@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardImg, CardImgOverlay, CardText, CardTitle } from 'reactstrap';
+import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component{
+    /*
     constructor(props){
         super(props);
-        
-    }
+    }*/
 
+    componentDidMount(){
+        console.log("DishDetailed Component Component-did-Mount is invoke")
+    }
+    componentDidUpdate(){
+        console.log("DishDetailed Component Component-did-Update is invoke")
+    }
     
     renderDish(dish){
         if (dish != null)
@@ -24,7 +30,6 @@ class DishDetail extends Component{
               <div></div>
           );
     }
-    
     
     renderComments(comments){
         const com = comments.map(comment =>{
@@ -51,6 +56,7 @@ class DishDetail extends Component{
     }
     
     render() {
+        console.log("DishDetailed Component render is invoke")
         if (this.props.dish) {
             return (
                 <div className="row">
@@ -69,8 +75,6 @@ class DishDetail extends Component{
             );
         }
     }
-    
-    
 
 }
 export default DishDetail;
