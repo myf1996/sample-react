@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
-
+/*
 class DishDetail extends Component{
-    /*
+    
     constructor(props){
         super(props);
-    }*/
+    }
 
     componentDidMount(){
         console.log("DishDetailed Component Component-did-Mount is invoke")
@@ -13,7 +13,25 @@ class DishDetail extends Component{
     componentDidUpdate(){
         console.log("DishDetailed Component Component-did-Update is invoke")
     }
-    
+    */
+    function RenderDish(dish){
+        if (dish != null)
+          return(
+              <Card>
+                  <CardImg width="100%" src={dish.image} alt={dish.name} />
+                  <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                  </CardBody>
+              </Card>
+          );
+      else
+          return(
+              <div></div>
+          );
+    }
+
+    /*
     renderDish(dish){
         if (dish != null)
           return(
@@ -30,7 +48,32 @@ class DishDetail extends Component{
               <div></div>
           );
     }
-    
+    */
+
+    function RenderComments(comments) {
+        const com = comments.map(comment =>{
+            return(
+              <div class="container">
+                  <li key={comment.id}>
+                      <p>{comment.rating}</p>
+                      <p>{comment.comment}</p>
+                      <p>{comment.author}</p>
+                      <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                  </li>
+              </div>
+            );
+          });
+          
+          return(
+              <div className="col-12 col-md-5 m-1">
+                  <h2>Comments</h2>
+                  <ul className="list-unstyled">
+                      {com}
+                  </ul>
+              </div>
+          );
+    }
+    /*
     renderComments(comments){
         const com = comments.map(comment =>{
           return(
@@ -54,7 +97,30 @@ class DishDetail extends Component{
             </div>
         );
     }
-    
+    */
+
+    const DishDetail = (props) => {
+        console.log("DishDetailed Component render is invoke")
+        if (props.dish) {
+            return (
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        {RenderDish(props.dish)}
+                    </div>
+                    <div>
+                        {RenderComments(props.dish.comments)}
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div></div>
+            );
+        }
+    }
+
+    /*
     render() {
         console.log("DishDetailed Component render is invoke")
         if (this.props.dish) {
@@ -74,7 +140,7 @@ class DishDetail extends Component{
                 <div></div>
             );
         }
-    }
+    }*/
 
-}
+//}
 export default DishDetail;
