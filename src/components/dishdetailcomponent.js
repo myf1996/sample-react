@@ -64,16 +64,17 @@ class DishDetail extends Component{
                   </li>
               </div>
             );
-          });
+        });
           
-          return(
+        
+        return(
               <div className="col-12 col-md-5 m-1">
                   <h2>Comments</h2>
                   <ul className="list-unstyled">
                       {com}
                   </ul>
               </div>
-          );
+        );
     }
     /*
     renderComments(comments){
